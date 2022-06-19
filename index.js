@@ -6,7 +6,7 @@ const GoodReadsParser = require("goodreads-parser")
 app.get("/", async (req, res) => {
     const { encodedURL } = req.query;
 
-    const url = Buffer.from(encodedURL, 'base64');
+    const url = decodeURI(encodedURL);
     const result = await GoodReadsParser.getBook({ url })
 
     return res.json(result)
