@@ -1,5 +1,5 @@
 {
-  "name": "git",
+  "name": "goodreads-book-endpoint",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
