@@ -4,13 +4,10 @@ const app = express()
 const GoodReadsParser = require("goodreads-parser")
 
 app.get("/", async (req, res) => {
-    const { url } = req.params;
+    const { encodedURL } = req.query;
 
-    const decodedUrl = Buffer.from(url, 'base64');
-
-    const result = await GoodReadsParser.parseByUrl(decodedUrl)
-
-    console.log({ decodedUrl, result })
+    const url = Buffer.from(encodedURL, 'base64');
+    const result = await GoodReadsParser.getBook({ url })
 
     return res.json(result)
 })
